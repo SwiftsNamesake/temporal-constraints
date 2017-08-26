@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="style.css" rel="stylesheet">
         <script>
+            customElements.define('day-column', class extends HTMLElement {
+
+            });
             document.addEventListener('DOMContentLoaded', () => {
                 console.log(`We're open for business at ${Date.now()}`);
                 document.addEventListener('keydown', (e) => {
