@@ -9,91 +9,49 @@
             customElements.define('day-column', class extends HTMLElement {
 
             });
+
+            function createDayColumn(nameOfDay) {
+                console.log('Creating day')
+                let day = document.createElement('div');
+                day.classList.add('day');
+
+                let employee = `<img class='portrait'></img>
+                                <div class='employee'>
+                                    <div class='shift'></div>
+                                    <div class='shift'></div>
+                                    <div class='shift'></div>
+                                </div>`
+
+                day.innerHTML = `<div class='day-header'>${nameOfDay}</div>
+                                 ${employee}
+                                 ${employee}
+                                 ${employee}
+                                 ${employee}
+                                 ${employee}`;
+                
+                return day;
+            };
+
             document.addEventListener('DOMContentLoaded', () => {
                 console.log(`We're open for business at ${Date.now()}`);
                 document.addEventListener('keydown', (e) => {
                     if (e.key.toLowerCase() === 't') {
                         document.querySelector('.settings').classList.toggle('hidden');
-                        console.log('toggle')
                     }
                 });
+
+                let page = document.querySelector('#whole-page');
+                ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].forEach((dayname) => {
+                    page.appendChild(createDayColumn(dayname));
+                })
+
             });
         </script>
     </head>
     <body>        
-        <div class='settings'>Settings</div>
+        <div class='settings hidden'>Settings</div>
         
-        <div id='whole-page'>
-
-            <div class='day'>
-                <div class='day-header'>Monday</div>
-                <div class='employee'>
-                    <div class='shift'></div>
-                    <div class='shift'></div>
-                    <div class='shift'></div>
-                </div>
-
-                <div class='employee'>
-                    <div class='shift'></div>
-                    <div class='shift'></div>
-                    <div class='shift'></div>
-                </div>
-
-                <div class='employee'>
-                    <div class='shift'></div>
-                    <div class='shift'></div>
-                    <div class='shift'></div>
-                </div>
-
-                <div class='employee'>
-                    <div class='shift'></div>
-                    <div class='shift'></div>
-                    <div class='shift'></div>
-                </div>
-
-                <div class='employee'>
-                    <div class='shift'></div>
-                    <div class='shift'></div>
-                    <div class='shift'></div>
-                </div>
-            </div>
-
-            <div class='day'>
-                <div class='day-header'>Tuesday</div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-            </div>
-
-            <div class='day'>
-                <div class='day-header'>Wednesday</div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-            </div>
-
-            <div class='day'>
-                <div class='day-header'>Thursday</div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-            </div>
-
-            <div class='day'>
-                <div class='day-header'>Friday</div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-                <div class='employee'></div>
-            </div>
-        </div>
+        <div id='whole-page'></div>
 
     </body>
 </html>
