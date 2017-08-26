@@ -1,5 +1,4 @@
-print('Beginning of server.py')
-import http
+from http import server
 import os
 import sys
 
@@ -10,9 +9,9 @@ def run():
     protocol = 'HTTP/1.0'
     server_address = ('', port) # What is 'bind' for
 
-    http.server.SimpleHTTPRequestHandler.protocol_version = protocol
+    server.SimpleHTTPRequestHandler.protocol_version = protocol
     
-    with http.server.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler) as httpd:
+    with server.HTTPServer(server_address, server.SimpleHTTPRequestHandler) as httpd:
         sa = httpd.socket.getsockname()
         serve_message = 'Serving HTTP on {host} port {port} (http://{host}:{port}/) ...'
         print(serve_message.format(host=sa[0], port=sa[1]))
