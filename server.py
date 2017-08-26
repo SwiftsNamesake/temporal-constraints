@@ -1,3 +1,4 @@
+print('Beginning of server.py')
 import http
 import os
 import sys
